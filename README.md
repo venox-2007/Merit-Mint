@@ -3,7 +3,6 @@
 A three-page site: **Home** (`index.html`), **Shop** (`shop.html`), and **Contact** (`contact.html`), sharing one stylesheet and one script.
 
 ```
-verdant-site/
 ├─ index.html        Home
 ├─ shop.html         Shop (filtering + quick-view)
 ├─ contact.html      Contact / enquiry form
@@ -24,6 +23,13 @@ Brand name is set to **Merit & Mint** across all three HTML files.
 
 ## Products
 Catalog covers six categories: **Liquid Soap, Hand Soap, Moisturizer, Shampoo, Conditioner, Shower Gel** (two products each, 12 total). All product data lives in one place: the `PRODUCTS` array at the top of `assets/script.js`. Edit names, prices, categories, descriptions, and detail bullets there — Home and Shop update automatically. Adding/removing a category also needs a matching filter button in `shop.html`. Product images are placeholder tiles; replace the `.card-img` / `.modal-img` blocks with `<img>` when you have photos.
+
+## India localization
+The site is set up for an India launch — treat all of this as placeholder, adjust to the real business:
+- **Currency:** every product price in `assets/script.js` is in rupees (`₹`), rounded to realistic placeholder amounts (₹149–₹499 depending on product type). Edit the `price` field per product.
+- **Contact details** (`contact.html`): phone/WhatsApp use a placeholder `+91 98765 43210` (`tel:+91…` and `https://wa.me/91…`), and the studio address is a placeholder Mumbai, Maharashtra address. Swap both for the real business number and address.
+- **Announcement bar:** a small bar above the nav on all three pages ("Free shipping on orders over ₹499 · Cash on Delivery available") — it's the same markup duplicated in each HTML file (no templating in this static site), styled by `.promo-bar` in `style.css`. Edit the text in all three files if it changes.
+- **COD / UPI:** mentioned on the Shop page's "How ordering works" band and on the Contact page intro copy.
 
 ## Make the contact form actually send
 Right now the form is front-end only — it shows a success state but doesn't deliver mail. Two easy options, no server needed:
