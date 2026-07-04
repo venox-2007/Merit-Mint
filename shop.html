@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — Merit &amp; Mint</title>
+<meta name="description" content="Browse Merit &amp; Mint's full range of liquid soap, hand soap, moisturizer, shampoo, conditioner, and shower gel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="brand">Merit&amp;Mint<small>Skincare</small></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Enquire</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- SHOP HEADER -->
+<section class="section" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="label">The full range</span>
+      <h2 class="serif">Everything on the shelf.</h2>
+      <p>Tap any product for details. To order, use “Enquire” and we'll take it from there.</p>
+    </div>
+    <div class="filters reveal">
+      <button class="filter active" data-filter="All">All</button>
+      <button class="filter" data-filter="Liquid Soap">Liquid Soap</button>
+      <button class="filter" data-filter="Hand Soap">Hand Soap</button>
+      <button class="filter" data-filter="Moisturizer">Moisturizer</button>
+      <button class="filter" data-filter="Shampoo">Shampoo</button>
+      <button class="filter" data-filter="Conditioner">Conditioner</button>
+      <button class="filter" data-filter="Shower Gel">Shower Gel</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT GRID -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="grid" id="shop-grid"></div>
+  </div>
+</section>
+
+<!-- ENQUIRY BAND -->
+<section class="section band">
+  <div class="wrap center reveal">
+    <span class="label">How ordering works</span>
+    <blockquote style="font-size:clamp(24px,3.2vw,40px)">Tell us what you'd like — we'll confirm price, stock, and delivery by reply.</blockquote>
+    <a href="contact.html" class="btn" style="margin-top:34px;background:var(--bg);color:var(--ink);border-color:var(--bg)">Send an enquiry</a>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <button class="modal-close" aria-label="Close">✕</button>
+    <div class="modal-img tone-1"><span class="glyph">V</span></div>
+    <div class="modal-body">
+      <span class="card-cat label" data-cat></span>
+      <h3 data-name></h3>
+      <span class="price" data-price></span>
+      <p class="long" data-long></p>
+      <ul data-details></ul>
+      <a class="btn" data-enquire href="contact.html" style="margin-top:10px;text-align:center">Enquire about this</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">Merit&amp;Mint<small>Skincare</small></a>
+        <p>Clean, considered skincare for everyday use. Replace with your tagline.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Shop</h5>
+        <a href="shop.html">All products</a>
+        <a href="shop.html">Liquid Soap</a>
+        <a href="shop.html">Hand Soap</a>
+        <a href="shop.html">Moisturizer</a>
+        <a href="shop.html">Shampoo</a>
+        <a href="shop.html">Conditioner</a>
+        <a href="shop.html">Shower Gel</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html">Our story</a>
+      </div>
+      <div class="foot-news">
+        <h5 style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:16px">Newsletter</h5>
+        <p>Occasional notes on new products. No noise.</p>
+        <form class="row" id="news-form">
+          <input type="email" placeholder="Your email" aria-label="Email" required>
+          <button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Merit &amp; Mint. Placeholder footer — add your details.</span>
+      <span>Instagram · Pinterest · TikTok</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
