@@ -194,19 +194,75 @@ document.addEventListener('DOMContentLoaded',()=>{
     msg.setSelectionRange(msg.value.length,msg.value.length);
   }
 
-  /* contact form (front-end only — see note in contact.html) */
+  /* contact form — submits real enquiries via Web3Forms */
   const form=document.getElementById('contact-form');
   if(form){
-    form.addEventListener('submit',e=>{
+    const errorBox=document.getElementById('form-error');
+    const submitBtn=form.querySelector('button[type="submit"]');
+    const originalLabel=submitBtn.textContent;
+    form.addEventListener('submit', async e=>{
       e.preventDefault();
       if(!form.checkValidity()){ form.reportValidity(); return; }
-      form.style.display='none';
-      document.getElementById('form-success').classList.add('show');
+      if(errorBox) errorBox.classList.remove('show');
+      submitBtn.disabled=true;
+      submitBtn.textContent='Sending...';
+      try{
+        const res=await fetch('https://api.web3forms.com/submit',{
+          method:'POST',
+          headers:{'Accept':'application/json'},
+          body:new FormData(form)
+        });
+        const data=await res.json();
+        if(data.success){
+          form.style.display='none';
+          document.getElementById('form-success').classList.add('show');
+        } else {
+          throw new Error(data.message||'Submission failed');
+        }
+      } catch(err){
+        submitBtn.disabled=false;
+        submitBtn.textContent=originalLabel;
+        if(errorBox){
+          errorBox.textContent='Something went wrong sending your message. Please try again, or email us directly at yug140107@gmail.com.';
+          errorBox.classList.add('show');
+        }
+      }
     });
   }
 
-  /* footer year + newsletter stub */
+  /* footer year + newsletter (submits real signups via Web3Forms) */
   const yr=document.getElementById('year'); if(yr) yr.textContent=new Date().getFullYear();
   const news=document.getElementById('news-form');
-  if(news){ news.addEventListener('submit',e=>{ e.preventDefault(); news.innerHTML='<p style="padding:13px 14px;font-size:14px;color:var(--sage-deep)">Thank you — you\u2019re on the list.</p>'; }); }
+  if(news){
+    const newsError=document.getElementById('news-error');
+    const newsBtn=news.querySelector('button[type="submit"]');
+    const newsOriginalLabel=newsBtn.textContent;
+    news.addEventListener('submit', async e=>{
+      e.preventDefault();
+      if(!news.checkValidity()){ news.reportValidity(); return; }
+      if(newsError) newsError.classList.remove('show');
+      newsBtn.disabled=true;
+      newsBtn.textContent='...';
+      try{
+        const res=await fetch('https://api.web3forms.com/submit',{
+          method:'POST',
+          headers:{'Accept':'application/json'},
+          body:new FormData(news)
+        });
+        const data=await res.json();
+        if(data.success){
+          news.innerHTML='<p style="padding:13px 14px;font-size:14px;color:var(--sage-deep)">Thank you — you\u2019re on the list.</p>';
+        } else {
+          throw new Error(data.message||'Submission failed');
+        }
+      } catch(err){
+        newsBtn.disabled=false;
+        newsBtn.textContent=newsOriginalLabel;
+        if(newsError){
+          newsError.textContent='Something went wrong — please try again.';
+          newsError.classList.add('show');
+        }
+      }
+    });
+  }
 });

@@ -95,7 +95,7 @@
     <div class="foot-top">
       <div class="foot-brand">
         <a href="index.html" class="foot-logo"><img src="assets/logo-full.png" alt="Merit & Mint" width="474" height="266"></a>
-        <p>Clean, considered skincare for everyday use. Replace with your tagline.</p>
+        <p>Clean, considered skincare for everyday use.</p>
       </div>
       <div class="foot-col">
         <h5>Shop</h5>
@@ -117,14 +117,18 @@
         <h5 style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:16px">Newsletter</h5>
         <p>Occasional notes on new products. No noise.</p>
         <form class="row" id="news-form">
-          <input type="email" placeholder="Your email" aria-label="Email" required>
+          <input type="hidden" name="access_key" value="b7019229-a9c9-4ab1-8d49-d7867fa2e388">
+          <input type="hidden" name="subject" value="Newsletter signup — Merit & Mint">
+          <input type="hidden" name="from_name" value="Merit & Mint — Newsletter">
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="email" name="email" placeholder="Your email" aria-label="Email" required>
           <button type="submit">Join</button>
         </form>
+        <p class="news-error" id="news-error"></p>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span id="year">2026</span> Merit &amp; Mint. Placeholder footer — add your details.</span>
-      <span>Instagram · Pinterest · TikTok</span>
+      <span>© <span id="year">2026</span> Merit &amp; Mint. All rights reserved.</span>
     </div>
   </div>
 </footer>
